@@ -6,6 +6,7 @@
 	"private": true,
 	"dependencies": {
 		"vscode-languageclient": "^9.0.1",
+		"clickhouse-cpp": "git://github.com/ClickHouse/clickhouse-cpp#f2b07a77e2a8ef0e001f097e87755529158dcc85",
 		"clickhouse-fmad": "git://github.com/fmadio/clickhouse-fmad#009ecb5a54a573a9b54d93fcb4a2733837375187"
 	}
 }
