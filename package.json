@@ -5,6 +5,7 @@
 	"version": "9927",
 	"private": true,
 	"dependencies": {
+		"vscode-languageclient": "^9.0.1",
 		"clickhouse-fmad": "git://github.com/fmadio/clickhouse-fmad#009ecb5a54a573a9b54d93fcb4a2733837375187"
 	}
 }
