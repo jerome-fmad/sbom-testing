@@ -1,0 +1,12 @@
+[workspace]
+members = []
+default-members = []
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+
+[dependencies]
+# Compromised commit to see what actions do.
+# Also note that there's no Cargo.toml in this repo.
+libxz = { git = "https://github.com/tukaani-project/xz.git", rev = "e5faaebbcf02ea880cfc56edc702d4f7298788ad" }
