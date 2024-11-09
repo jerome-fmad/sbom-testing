@@ -7,7 +7,7 @@
 	"dependencies": {
 		"fmad-fake-package": "0.0.0",
 		"nginx": "pkg:deb/ubuntu/nginx",
-		"libxz": "pkg:deb/debian/xz-utils?arch=source",
+		"libxz": "pkg:deb/ubuntu/xz-utils@6.1.0?arch=src",
 		"vscode-languageclient": "^9.0.1",
 		"clickhouse-cpp": "git://github.com/ClickHouse/clickhouse-cpp#f2b07a77e2a8ef0e001f097e87755529158dcc85",
 		"clickhouse-fmad": "git://github.com/fmadio/clickhouse-fmad#009ecb5a54a573a9b54d93fcb4a2733837375187"
