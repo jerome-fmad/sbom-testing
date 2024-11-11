@@ -41,3 +41,9 @@ jobs:
         file: ./fmadio20.rockspec
         artifact-name: luarocks.spdx.json
         dependency-snapshot: true
+    - name: Scan Conda manifest and upload dependency results
+      uses: anchore/sbom-action@fc46e51fd3cb168ffb36c6d1915723c47db58abb
+      with:
+        file: ./environment.yml
+        artifact-name: conda.spdx.json
+        dependency-snapshot: true
