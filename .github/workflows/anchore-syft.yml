@@ -29,10 +29,15 @@ jobs:
     steps:
     - name: Checkout the code
       uses: actions/checkout@v4
-    - name: Scan the image and upload dependency results
+    - name: Scan Conanfile and upload dependency results
       uses: anchore/sbom-action@fc46e51fd3cb168ffb36c6d1915723c47db58abb
       with:
         file: ./conanfile.txt
+        artifact-name: conan.spdx.json
+        dependency-snapshot: true
+    - name: Scan LuaRocks manifest and upload dependency results
+      uses: anchore/sbom-action@fc46e51fd3cb168ffb36c6d1915723c47db58abb
+      with:
         file: ./fmadio20.rockspec
-        artifact-name: image.spdx.json
+        artifact-name: luarocks.spdx.json
         dependency-snapshot: true
