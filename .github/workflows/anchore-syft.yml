@@ -33,5 +33,6 @@ jobs:
       uses: anchore/sbom-action@fc46e51fd3cb168ffb36c6d1915723c47db58abb
       with:
         file: ./conanfile.txt
+        file: ./fmadio20.rockspec
         artifact-name: image.spdx.json
         dependency-snapshot: true
