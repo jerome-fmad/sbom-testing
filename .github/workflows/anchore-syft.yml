@@ -30,7 +30,7 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
     - name: Scan the image and upload dependency results
-      uses: anchore/sbom-action@bb716408e75840bbb01e839347cd213767269d4a
+      uses: anchore/sbom-action@fc46e51fd3cb168ffb36c6d1915723c47db58abb
       with:
         file: ./conanfile.txt
         artifact-name: image.spdx.json
