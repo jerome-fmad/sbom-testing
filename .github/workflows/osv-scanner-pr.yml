@@ -28,8 +28,8 @@ jobs:
         id: sbom-upload
         uses: actions/upload-artifact@master
         with:
-          name: sbom
-          path: /tmp/spdx.sbom.json
+          name: spdx.sbom.json
+          path: /tmp
   scan-pr:
     needs: get-sbom
     runs-on: ubuntu-latest
