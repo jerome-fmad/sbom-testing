@@ -40,10 +40,14 @@ jobs:
         with:
           name: sbom
           path: /tmp/spdx.sbom.json
-      - uses: actions/checkout@v4
       - name: SBOM Scan
-        id: sbom-scan
-        uses: ./.github/actions/osv-scanner-reusable
+        uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
+        with:
+          scan-args: |-
+            --output=results.json
+            --format=json
+            --sbom=/tmp/spdx.sbom.json
+        continue-on-error: true
   # uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
   # with:
   #   scan-args: |-
