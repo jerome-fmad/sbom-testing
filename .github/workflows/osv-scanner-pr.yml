@@ -50,8 +50,9 @@ jobs:
             --format=json
             --sbom=_spdx.sbom.json
         continue-on-error: true
-  # uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
-  # with:
-  #   scan-args: |-
-  #     --sbom=/tmp/spdx.sbom.json
-  #   upload-sarif: false
+      - name: Results Upload
+        id: results-upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: osv-scan-results
+          path: ./results.json
