@@ -41,8 +41,10 @@ jobs:
           name: sbom
       - name: List Working Directory Contents
         id: ls
-        run: |
-          ls -l
+        run: ls -l
+      - name: Print SBOM
+        id: sbom-print
+        run: cat spdx.sbom.json
       - name: SBOM Scan
         uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
         with:
