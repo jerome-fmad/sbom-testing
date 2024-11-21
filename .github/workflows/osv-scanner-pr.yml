@@ -40,6 +40,7 @@ jobs:
         with:
           name: sbom
           path: /tmp/spdx.sbom.json
+      - uses: actions/checkout@v4
       - name: SBOM Scan
         id: sbom-scan
         uses: ./.github/actions/osv-scanner-reusable
