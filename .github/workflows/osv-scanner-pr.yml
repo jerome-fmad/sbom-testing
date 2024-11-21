@@ -42,7 +42,7 @@ jobs:
           path: /tmp/spdx.sbom.json
       - name: SBOM Scan
         id: sbom-scan
-        uses: ./.github/actions/osv-scanner-reusable.yml
+        uses: ./.github/actions/osv-scanner-reusable
   # uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
   # with:
   #   scan-args: |-
