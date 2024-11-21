@@ -29,7 +29,6 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: spdx.sbom.json
-          path: /tmp
   scan-pr:
     needs: get-sbom
     runs-on: ubuntu-latest
@@ -39,14 +38,13 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: spdx.sbom.json
-          path: /tmp
       - name: SBOM Scan
         uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
         with:
           scan-args: |-
             --output=results.json
             --format=json
-            --sbom=/tmp/spdx.sbom.json
+            --sbom=spdx.sbom.json
         continue-on-error: true
   # uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
   # with:
