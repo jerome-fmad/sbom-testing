@@ -31,8 +31,8 @@ jobs:
           name: sbom
           path: /tmp/spdx.sbom.json
   scan-pr:
-    runs-on: ubuntu-latest
     needs: get-sbom
+    runs-on: ubuntu-latest
     steps:
       - name: SBOM Download
         id: sbom-download
@@ -42,8 +42,9 @@ jobs:
           path: /tmp/spdx.sbom.json
       - name: SBOM Scan
         id: sbom-scan
-        uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
-        with:
-          scan-args: |-
-            --sbom=/tmp/spdx.sbom.json
-          upload-sarif: false
+        uses: ./.github/actions/osv-scanner-reusable.yml
+  # uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
+  # with:
+  #   scan-args: |-
+  #     --sbom=/tmp/spdx.sbom.json
+  #   upload-sarif: false
