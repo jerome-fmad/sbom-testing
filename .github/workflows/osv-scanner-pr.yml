@@ -23,11 +23,11 @@ jobs:
         env:
           BEARER: ${{ secrets.BEARER }}
         run: |
-          curl -L -o /github/workspace/spdx.sbom.json -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" -H "Authorization: Bearer $BEARER" https://api.github.com/repos/jerome-fmad/sbom-testing/dependency-graph/sbom
+          curl -L -o /tmp/spdx.sbom.json -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" -H "Authorization: Bearer $BEARER" https://api.github.com/repos/jerome-fmad/sbom-testing/dependency-graph/sbom
   scan-pr:
     needs: get-sbom
     uses: "google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@v1.8.5"
     with:
       scan-args: |-
-        --sbom=spdx.sbom.json
+        --sbom=/tmp/spdx.sbom.json
       upload-sarif: false
