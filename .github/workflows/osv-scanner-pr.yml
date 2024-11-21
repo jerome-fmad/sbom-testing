@@ -26,20 +26,19 @@ jobs:
           curl -L -o ./spdx.sbom.json -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" -H "Authorization: Bearer $BEARER" https://api.github.com/repos/jerome-fmad/sbom-testing/dependency-graph/sbom
       - name: SBOM Upload
         id: sbom-upload
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         with:
-          name: spdx.sbom.json
-          path: ./
+          name: sbom
+          path: ./spdx.sbom.json
   scan-pr:
     needs: get-sbom
     runs-on: ubuntu-latest
     steps:
       - name: SBOM Download
         id: sbom-download
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v4
         with:
-          name: spdx.sbom.json
-          path: ./
+          name: sbom
       - name: SBOM Scan
         uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
         with:
