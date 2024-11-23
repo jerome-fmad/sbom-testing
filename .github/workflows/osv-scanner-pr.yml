@@ -44,7 +44,8 @@ jobs:
         run: cat spdx.sbom.json | jq '.sbom' > _spdx.sbom.json 
       - name: URI-decode JSON
         id: sbom-decode
-        run: '"${*//+/ }"; echo -e "${_//%/\\x}" > spdx.sbom.json'
+        # https://stackoverflow.com/questions/6250698/how-to-decode-url-encoded-string-in-shell
+        run: 'function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; } ; urldecode "$(cat _spdx.sbom.json)" > spdx.sbom.json'
       - name: SBOM Scan
         uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
         with:
