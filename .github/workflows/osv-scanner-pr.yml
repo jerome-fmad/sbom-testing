@@ -1,4 +1,4 @@
-name: OSV-Scanner PR Scan
+bname: OSV-Scanner PR Scan
 
 on:
   workflow_dispatch:
@@ -39,16 +39,19 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: sbom
-      - name: Post-process JSON
-        id: sbom-print
+      - name: De-nest JSON
+        id: sbom-denest
         run: cat spdx.sbom.json | jq '.sbom' > _spdx.sbom.json 
+      - name: URI-decode JSON
+        id: sbom-decode
+        run: '"${*//+/ }"; echo -e "${_//%/\\x}" > spdx.sbom.json'
       - name: SBOM Scan
         uses: google/osv-scanner-action/osv-scanner-action@cbb0295db259bba04d38625792c18646ed18bc89 # v1.9.1
         with:
           scan-args: |-
             --output=results.json
             --format=json
-            --sbom=_spdx.sbom.json
+            --sbom=spdx.sbom.json
         continue-on-error: true
       - name: Results Upload
         id: results-upload
