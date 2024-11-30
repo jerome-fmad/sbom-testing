@@ -721,14 +721,15 @@ local Bearer = os.getenv("BEARER")
 local Correlator = nil
 local JobID = os.date("%Y%m%d_%H%M%S_deps")
 
-while (ArgI <= #ARGV) do
-	local v = ARGV[ArgI]
+while (ArgI <= #arg) do
+	local v = arg[ArgI]
 	if (v == "--dry-run" or v == "-d") then
 		DryRun = true
 	elseif (v == "--correlator" or v == "-c") then
-		Correlator = ARGV[ArgI + 1]
+		Correlator = arg[ArgI + 1]
 		ArgI = ArgI + 1
 	end
+	ArgI = ArgI + 1
 end
 
 assert(type(Bearer) == "string")
