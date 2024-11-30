@@ -1,0 +1,9 @@
+{
+	"package_url": "pkg:github/ClickHouse/clickhouse-cpp@9d23bf5060602ae89b8c17b4f0884ebc50b93f36",
+	"dependencies": [
+		"pkg:generic/libabsl@unknown",
+		"pkg:generic/libcityhash@1.0.2",
+		"pkg:generic/liblz4@1.9.2",
+		"pkg:generic/libzstd@1.5.5"
+	]
+}
