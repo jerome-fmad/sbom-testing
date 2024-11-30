@@ -725,7 +725,7 @@ while (ArgI <= #ARGV) do
 	local v = ARGV[ArgI]
 	if (v == "--dry-run" or v == "-d") then
 		DryRun = true
-	else if (v == "--correlator" or v == "-c") then
+	elseif (v == "--correlator" or v == "-c") then
 		Correlator = ARGV[ArgI + 1]
 		ArgI = ArgI + 1
 	end
