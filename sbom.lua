@@ -792,7 +792,7 @@ local Payload = string.format(
 		}
 	}
 }]],
-Commit, JobCorrelator, JobID, os.date(), Manifests)
+Commit, JobCorrelator, JobID, os.date("%Y-%m-%dT%H:%M:%SZ"), Manifests)
 
 if (DryRun) then
 	print(Payload)
