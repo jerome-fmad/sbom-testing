@@ -718,7 +718,7 @@ JSON = json
 local ArgI = 1
 local DryRun = false
 local Bearer = os.getenv("BEARER")
-local Correlator = nil
+local JobCorrelator = nil
 local JobID = os.date("%Y%m%d_%H%M%S_deps")
 
 while (ArgI <= #arg) do
@@ -726,14 +726,14 @@ while (ArgI <= #arg) do
 	if (v == "--dry-run" or v == "-d") then
 		DryRun = true
 	elseif (v == "--correlator" or v == "-c") then
-		Correlator = arg[ArgI + 1]
+		JobCorrelator = arg[ArgI + 1]
 		ArgI = ArgI + 1
 	end
 	ArgI = ArgI + 1
 end
 
 assert(type(Bearer) == "string")
-assert(type(Correlator) == "string")
+assert(type(JobCorrelator) == "string")
 assert(type(JobID) == "string")
 
 local ManifestFind = io.popen("find -name '*.sbom.json'")
@@ -800,8 +800,8 @@ if (DryRun) then
 end
 
 local RetCode = os.execute(string.format(
-	"curl -L -X POST -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28'" ..
-	"-H 'Authorization: Bearer %s' https://api.github.com/repos/jerome-fmad/sbom-testing/dependency-graph/snapshots" ..
+	"curl -L -X POST -H 'Accept: application/vnd.github+json' -H 'X-GitHub-Api-Version: 2022-11-28' " ..
+	"-H 'Authorization: Bearer %s' https://api.github.com/repos/jerome-fmad/sbom-testing/dependency-graph/snapshots " ..
 	"-d '%s'",
 	Bearer, Payload
 ))
