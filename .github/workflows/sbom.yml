@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "master" ]
 jobs:
-  tbd:
+  submit-fetch-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +17,7 @@ jobs:
           GITHUB_JOB: ${{ github.job }}
           GITHUB_WORKFLOW: ${{ github.workflow }}
           BEARER: ${{ secrets.BEARER }}
-        run: ./sbom.lua --dry-run --correlator "$GITHUB_WORKFLOW-$GITHUB_JOB"
+        run: ./sbom.lua --dry-run --correlator "$GITHUB_WORKFLOW-$GITHUB_JOB" | jq
       - name: Submit Dependencies
         id: submit-deps
         env:
