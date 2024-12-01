@@ -11,6 +11,9 @@ jobs:
       - name: Install LuaJIT
         id: install-luajit
         run: sudo apt install luajit
+      - name: Dependency Submission Preview
+        id: submit-deps-preview
+        run: ./sbom.lua --dry-run --correlator "$GITHUB_WORKFLOW-$GITHUB_JOB"
       - name: Submit Dependencies
         id: submit-deps
         env:
