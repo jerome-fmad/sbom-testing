@@ -772,7 +772,7 @@ local Payload = string.format(
 [[{
 	"version": 0,
 	"sha": "%s",
-	"ref": "refs/head/master",
+	"ref": "refs/heads/master",
 	"job": {
 		"correlator": "%s",
 		"id": "%s"
